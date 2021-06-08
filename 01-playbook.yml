@@ -4,3 +4,6 @@
    - name: Print hello world
      debug: #{ msg: "Hello world" }
        msg: Hello world
+   - name: Print another one
+     debug:
+       msg: our wolrd
