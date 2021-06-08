@@ -20,3 +20,14 @@
     - name: Print variable
       debug:
         msg: URL == {{ URL }}
+
+- name: Demo from variables from Input
+  hosts: all
+  vars_prompt:
+    - name: URL
+      prompt: Enter URL
+      private: no
+  tasks:
+    - name: URL
+      debug:
+        msg: URL == {{ URL }}
