@@ -44,4 +44,4 @@
   tasks:
     - name: Print a fact
       debug:
-        msg: URL == {{ LOGNAME }}
+        msg: Log name == {{ LOGNAME }}
