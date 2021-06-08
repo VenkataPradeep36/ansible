@@ -6,9 +6,8 @@
     - name: Print Varibale
       debug:
         msg: URL = {{ URL }}
-  vars:
-    URL: ansible.example.com
-  tasks:
     - name: print from tasks
+      vars:
+        URL: task.example.com
       debug:
         msg: URL = {{ URL }}
