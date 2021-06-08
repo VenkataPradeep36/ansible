@@ -32,7 +32,7 @@
       debug:
         msg: URL == {{ URL }}
 
--name: Demo from variables from Inventory
+- name: Demo from variables from Inventory
   hosts: all
   tasks:
     - name: URL
