@@ -44,4 +44,4 @@
   tasks:
     - name: Print a fact
       debug:
-        msg: Log name == {{ LOGNAME }}
+        msg: Log name == {{ ansible_user_dir }}
