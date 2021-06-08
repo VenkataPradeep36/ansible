@@ -45,3 +45,13 @@
     - name: Print a fact
       debug:
         msg: Log name == {{ ansible_user_dir }}
+
+- name: Register a variable
+  hosts: all
+  tasks:
+    - name: Grab how many users logged in
+      shell: who | wc -l
+      register: out
+    - name: print out
+      debug:
+        msg: How many users logged in == {{ out }}
