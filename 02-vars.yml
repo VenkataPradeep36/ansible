@@ -54,4 +54,4 @@
       register: out
     - name: print out
       debug:
-        msg: How many users logged in == {{ out }}
+        msg: How many users logged in == {{ out.stdout }}
