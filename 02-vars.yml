@@ -10,7 +10,7 @@
       vars:
         URL: task.example.com
       debug:
-        msg: URL = {{ URL }}
+        msg: "{{ URL }}"
 
 - name: Demo from Variable files
   hosts: all
