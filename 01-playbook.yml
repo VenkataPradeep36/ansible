@@ -10,6 +10,6 @@
   vars:
     APP_NAME: roboshop
       tasks:
-        - name: Print you world
+      - name: Print you world
           debug:
             msg: Your world
