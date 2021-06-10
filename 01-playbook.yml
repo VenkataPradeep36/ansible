@@ -4,3 +4,12 @@
    - name: Print hello world
      debug: #{ msg: "Hello world" }
        msg: Hello world
+
+- name: Demo on playbook2
+  hosts: all
+  vars:
+    SPECIFIC_GROUP: roboshop
+      tasks:
+        - name: Print you world
+          debug:
+            msg: Your world
