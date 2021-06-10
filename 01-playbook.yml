@@ -9,7 +9,7 @@
   hosts: all
   vars:
     APP_NAME: roboshop
-      tasks:
-      - name: Print you world
+  tasks:
+    - name: Print you world
           debug:
             msg: {{ APP_NAME }}
