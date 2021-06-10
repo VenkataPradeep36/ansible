@@ -8,7 +8,7 @@
 - name: Demo on playbook2
   hosts: all
   vars:
-    SPECIFIC_GROUP: roboshop
+    APP_NAME: roboshop
       tasks:
         - name: Print you world
           debug:
