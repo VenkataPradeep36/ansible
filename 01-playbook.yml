@@ -11,5 +11,5 @@
     APP_NAME: roboshop
   tasks:
     - name: Print you world
-          debug:
-            msg: {{ APP_NAME }}
+      debug:
+        msg: {{ APP_NAME }}
