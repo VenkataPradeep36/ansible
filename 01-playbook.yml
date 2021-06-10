@@ -12,4 +12,4 @@
   tasks:
     - name: Print you world
       debug:
-        msg: {{ APP_NAME }}
+        msg: "{{ APP_NAME }}"
