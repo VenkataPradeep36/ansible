@@ -55,3 +55,12 @@
     - name: print out
       debug:
         msg: How many users logged in == {{ out.stdout }}
+
+- name: Demo On Variables
+  hosts: all
+  vars:
+    URL: play2.example.com
+  tasks:
+    - name: Print Varibale
+      debug:
+        msg: URL = {{ URL }}
