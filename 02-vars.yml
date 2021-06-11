@@ -2,7 +2,6 @@
   hosts: all
   vars:
     URL: play.example.com
-    URL: play2.example.com
   tasks:
     - name: Print Varibale
       debug:
