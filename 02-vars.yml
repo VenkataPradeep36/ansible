@@ -59,7 +59,7 @@
 - name: Demo On Variables
   hosts: all
   vars:
-    URL: play2.example.com
+    URL: play.example.com
   tasks:
     - name: Print Varibale
       debug:
