@@ -61,6 +61,6 @@
         NO_OF_USERS: "{{ out.stdout }}"
 
     - name: Print the no of users from new var
-     debug:
-       msg: "{{ NO_OF_USERS }}"
+      debug:
+        msg: "{{ NO_OF_USERS }}"
 
