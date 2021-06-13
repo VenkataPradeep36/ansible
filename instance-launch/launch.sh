@@ -12,14 +12,14 @@ LID=lt-0c95879a21fb6edbf
 LVER=2
 
 DNS_UPDATE() {
-  PRIVATEIP=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}"  | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
+  PRIVATEIP=$(aws --region us-east-1 ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}"  | jq .Reservations[].Instances[].PrivateIpAddress | xargs -n1)
   sed -e "s/COMPONENT/${COMPONENT}/" -e "s/IPADDRESS/${PRIVATEIP}/" record.json >/tmp/record.json
   aws route53 change-resource-record-sets --hosted-zone-id Z00392432B47AFBZ92BGI --change-batch file:///tmp/record.json | jq
 }
 
 INSTANCE_CREATE() {
   ## Validate If Instance is already there
-INSTANCE_STATE=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}"  | jq .Reservations[].Instances[].State.Name | xargs -n1)
+INSTANCE_STATE=$(aws --region us-east-1 ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}"  | jq .Reservations[].Instances[].State.Name | xargs -n1)
 
 if [ "${INSTANCE_STATE}" = "running" ]; then
   echo "Instance already exists!!"
@@ -33,7 +33,7 @@ if [ "${INSTANCE_STATE}" = "stopped" ]; then
 fi
 
 echo -n Instance ${COMPONENT} created - IPADDRESS is
-aws ec2 run-instances --launch-template LaunchTemplateId=${LID},Version=${LVER}  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq | grep  PrivateIpAddress | awk '{print $NF}'  |xargs -n1
+aws ec2 --region us-east-1 run-instances --launch-template LaunchTemplateId=${LID},Version=${LVER}  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" | jq | grep  PrivateIpAddress | awk '{print $NF}'  |xargs -n1
   sleep 10
   DNS_UPDATE
 }
