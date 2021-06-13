@@ -1,3 +1,5 @@
 - name: setup the Roboshop Project
   hosts: frontend
-
+  roles:
+    - name: Load frontend role
+      role: frontend

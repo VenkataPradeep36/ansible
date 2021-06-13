@@ -1,0 +1,3 @@
+- name: print component name
+  debug:
+    msg: component=mongodb
