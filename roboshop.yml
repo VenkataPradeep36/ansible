@@ -4,3 +4,9 @@
   roles:
     - name: Load frontend role
       role: frontend
+
+- name: Start Nginx
+  ansible.builtin.systemd:
+    state: restarted
+    name: nginx
+    enabled: yes
