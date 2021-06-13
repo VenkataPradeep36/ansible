@@ -17,5 +17,5 @@
 - name: Download Package From Git_Hub and Extract It
   ansible.builtin.unarchive:
     src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /tmp/frontend.zip
+    dest: /usr/share/nginx
     remote_src: yes
