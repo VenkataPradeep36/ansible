@@ -2,3 +2,9 @@
   yum:
     name: nginx
     state: present
+
+- name: Start Nginx
+  ansible.builtin.systemd:
+    state: restarted
+    name: nginx
+    enabled: yes
