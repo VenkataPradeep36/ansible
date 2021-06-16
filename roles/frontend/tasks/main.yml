@@ -9,16 +9,13 @@
     name: nginx
     enabled: yes
 
-- name: Remove Old HtDocs directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
-
-- name: Download Package From Git_Hub and Extract It
-  ansible.builtin.unarchive:
-    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
-    dest: /usr/share/nginx
-    remote_src: yes
+- name: Download package
+  include_role:
+    name: common
+    tasks_from: download-from-github
+  vars:
+    APP_DIR: /usr/share/nginx/html
+    EXTRACT_DIR: /usr/share/nginx
 
 - name: Copy Extracted Directory
   ansible.builtin.copy:
