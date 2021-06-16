@@ -3,7 +3,7 @@
   tasks:
     - name: Print language name
       debug:
-        msg: {{language}}
+        msg: "{{language}}"
   loop:
     - Linux
     - python
