@@ -7,20 +7,23 @@
     gpgcheck: yes
     gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc'
     file: mongodb
+## if  anything goes wrong refer ansible in azure repo
 
 - name: Install MongoDB
   yum:
     name: mongodb-org
     state: present
 
-- name: Start MongoDB service
-  ansible.builtin.systemd:
-    name: mongod
-    state: started
-    enabled: yes
-
 - name: Update listen Ip Address
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
+  notify:
+    - Restart MongoDB
+
+- name: Start MongoDB service
+  ansible.builtin.systemd:
+    name: mongod
+    state: restarted
+    enabled: yes
