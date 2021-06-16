@@ -19,7 +19,7 @@
   tags:
     - AWS
   tasks:
-    - name: Demo on tags task level print aws
+    - name: Demo on tags play level print aws
       debug:
         msg: AWS
 
@@ -28,6 +28,6 @@
   tags:
     - AZURE
   tasks:
-    - name: Demo on tags task level print azure
+    - name: Demo on tags play level print azure
       debug:
         msg: AZURE
