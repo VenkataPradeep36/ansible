@@ -1,7 +1,7 @@
 - name: Demo on loops
   hosts: localhost
   tasks:
-    - name: Print language name
+    - name: Print Language Name
       debug:
         msg: "{{language}}"
       loop:
