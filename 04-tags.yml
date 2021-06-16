@@ -8,7 +8,7 @@
           - AWS
 
     - name: Demo on tags task level print azure
-        debug:
-          msg: AZURE
+      debug:
+        msg: AZURE
           tags:
             - AZURE
