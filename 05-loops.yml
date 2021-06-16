@@ -4,6 +4,6 @@
     - name: Print language name
       debug:
         msg: "{{language}}"
-  loop:
-    - Linux
-    - python
+      loop:
+        - linux
+        - python
