@@ -5,7 +5,7 @@
     baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
     enabled: yes
     gpgcheck: yes
-    gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc'
+    gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc
     file: mongodb
 
 - name: Install MongoDB
@@ -24,3 +24,4 @@
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
+
