@@ -1,0 +1,14 @@
+- name: Demo on tags
+  hosts: localhost
+  tasks:
+    - name: Demo on tags task level print aws
+      debug:
+        msg: AWS
+        tags:
+          - AWS
+
+    - name: Demo on tags task level print azure
+        debug:
+          msg: AZURE
+          tags:
+            - AZURE
