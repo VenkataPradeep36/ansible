@@ -5,3 +5,9 @@
     - name: Load frontend role
       role: frontend
 
+- name: setup the Roboshop Project
+  hosts: MONGODB
+  roles:
+    - name: Load mongodb role
+      role: mongodb
+
