@@ -42,7 +42,8 @@
 
 - name: Load schema of user and catalogue
   community.mongodb.mongodb_shell:
-    login_user: user
-    login_password: secret
-    file: "/tmp/mongodb-main/user.js"
+    file: "/tmp/mongodb-main/{{item}}"
     idempotent: yes
+  loop:
+    - user.js
+    - catalogue.js
