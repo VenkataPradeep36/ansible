@@ -1,4 +1,4 @@
-- name: setup the Roboshop Project
+- name: setup the Roboshop Project -- Frontend Component
   hosts: FRONTEND
   become: yes
   tags:
@@ -7,7 +7,7 @@
     - name: Load frontend role
       role: frontend
 
-- name: setup the Roboshop Project
+- name: setup the Roboshop Project -- MongoDB Component
   hosts: MONGODB
   become: yes
   tags:
@@ -16,7 +16,7 @@
     - name: Load mongodb role
       role: mongodb
 
-- name: setup the Roboshop Project
+- name: setup the Roboshop Project -- Catalogue Component
   hosts: CATALOGUE
   become: yes
   tags:
@@ -25,7 +25,7 @@
     - name: Load mongodb role
       role: catalogue
 
-- name: setup the Roboshop Project
+- name: setup the Roboshop Project -- redis Component
   hosts: REDIS
   become: yes
   tags:
