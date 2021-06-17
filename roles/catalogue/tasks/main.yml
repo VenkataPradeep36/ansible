@@ -24,4 +24,4 @@
     src: /home/roboshop/catalogue-main/
     dest: /home/roboshop/catalogue/
     remote_src: yes
-    become_user: yes
+    become_user: roboshop
