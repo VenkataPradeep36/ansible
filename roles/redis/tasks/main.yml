@@ -7,7 +7,7 @@
   yum:
     name: redis
     state: present
-    enablerepo: 'remi'
+    enablerepo: "remi"
 
 - name: Update listen Ip Address
   ansible.builtin.replace:
