@@ -9,7 +9,7 @@
 - name: Add roboshop user
   ansible.builtin.user:
     name: roboshop
-    comment: Roboshop Project
+    comment: Roboshop Project user
 
 - name: Download package
   include_role:
@@ -26,12 +26,12 @@
     remote_src: yes
   become_user: roboshop
 
-- name: Install NodeJS dependencies
+- name: Download NodeJS dependencies
   community.general.npm:
     path: /home/roboshop/catalogue
   become_user: roboshop
 
-- name: Copy Systemd file
+- name: Copy SystemD file
   copy:
     src: systemd.service
     dest: /etc/systemd/system/catalogue.service

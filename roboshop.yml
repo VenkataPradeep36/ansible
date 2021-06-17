@@ -25,3 +25,11 @@
     - name: Load mongodb role
       role: catalogue
 
+- name: setup the Roboshop Project
+  hosts: REDIS
+  become: yes
+  tags:
+    - redis
+  roles:
+    - name: Load mongodb role
+      role: redis

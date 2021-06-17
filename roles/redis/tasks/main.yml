@@ -1,3 +1,21 @@
-- name: print component name
-  debug:
-    msg: component=redis
+- name: Install Redis package to get Redis repos
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+    state: present
+
+- name: Install  Redis
+  yum:
+    name: redis
+    state: present
+
+- name: Update listen Ip Address
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Start Redis
+  systemd:
+    name: redis
+    state: started
+    enabled: yes
