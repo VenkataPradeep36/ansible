@@ -22,7 +22,7 @@
   tags:
     - catalogue
   roles:
-    - name: Load mongodb role
+    - name: Load catalogue role
       role: catalogue
 
 - name: setup the Roboshop Project -- redis Component
@@ -31,5 +31,25 @@
   tags:
     - redis
   roles:
-    - name: Load mongodb role
+    - name: Load redis role
       role: redis
+
+
+- name: setup the Roboshop Project -- user Component
+  hosts: USER
+  become: yes
+  tags:
+    - user
+  roles:
+    - name: Load user role
+      role: user
+
+
+- name: setup the Roboshop Project -- cart Component
+  hosts: CART
+  become: yes
+  tags:
+    - cart
+  roles:
+    - name: Load cart role
+      role: cart
