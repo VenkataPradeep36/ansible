@@ -21,7 +21,7 @@
 
 - name: Moving Catalogue-main to catalogue
   ansible.builtin.copy:
-    src: /home/roboshop/catalogue-main/
+    src: /tmp/catalogue-main/
     dest: /home/roboshop/catalogue/
     remote_src: yes
     become_user: roboshop
