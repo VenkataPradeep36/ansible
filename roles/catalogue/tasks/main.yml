@@ -16,8 +16,8 @@
     name: common
     tasks_from: download-from-github
   vars:
-    APP_DIR: /home/roboshop
-    EXTRACT_DIR: /home/roboshop/catalogue
+    APP_DIR: /home/roboshop/catalogue
+    EXTRACT_DIR: /tmp
 
 - name: Moving Catalogue-main to catalogue
   ansible.builtin.copy:
