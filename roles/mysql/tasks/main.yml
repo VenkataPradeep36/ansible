@@ -1,3 +1,41 @@
-- name: print component name
+- name: Add MySQL repository
+  yum_repository:
+    name: MySQL
+    description: MySQL Repository
+    baseurl: http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/
+    enabled: yes
+    gpgcheck: no
+    file: mongodb
+
+- name: Remove MariaDB
+  yum:
+    name: mariadb-libs
+    state: absent
+
+- name: Insall MySQL Community
+  yum:
+    name: mysql-community-server
+    state: present
+
+- name: Start MySQL
+  systemd:
+    name: mysqld
+    state: started
+    enabled: yes
+
+- name: Grabbing a password in log file
+  shell: grep "A temporary password" /var/log/mysql.d | awk '{print $NF}'
+  register: MYSQL_DEFAULT_PASSWORD
+
+- name: debug
   debug:
-    msg: component=mysql
+    msg: "{{MYSQL_DEFAULT_PASSWORD}}"
+
+- name: copy password from reset MySQL script
+  copy:
+    src: mysql-pass-reset.sql
+    dest: /tmp/mysql-pass-reset.sql
+
+- name: set MySQL root password
+  shell: mysql -u root -p{{MYSQL_DEFAULT_PASSWORD.stdout}} > /tmp/mysql-pass-reset.sql
+
