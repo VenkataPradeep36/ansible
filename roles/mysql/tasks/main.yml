@@ -24,7 +24,7 @@
     enabled: yes
 
 - name: Grabbing a password in log file
-  shell: grep "A temporary password" /var/log/mysql.d | awk '{print $NF}'
+  shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
   register: MYSQL_DEFAULT_PASSWORD
 
 
