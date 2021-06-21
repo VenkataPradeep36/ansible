@@ -29,8 +29,8 @@
 
 
 - name: debug
-    debug:
-      msg: {{MYSQL_DEFAULT_PASSWORD}}
+  debug:
+    msg: {{MYSQL_DEFAULT_PASSWORD}}
 
 #
 #- name: copy password from reset MySQL script
