@@ -28,13 +28,11 @@
   register: MYSQL_DEFAULT_PASSWORD
 
 
-
-
 - name: copy password from reset MySQL script
   copy:
     src: mysql-pass-reset.sql
     dest: /tmp/mysql-pass-reset.sql
 
 - name: set MySQL root password
-  shell: mysql --connect-expired-password -u root -p{{MYSQL_DEFAULT_PASSWORD.stdout}} > /tmp/mysql-pass-reset.sql
+  shell: mysql --connect-expired-password -u root -p{{MYSQL_DEFAULT_PASSWORD.stdout}} < /tmp/mysql-pass-reset.sql
 
