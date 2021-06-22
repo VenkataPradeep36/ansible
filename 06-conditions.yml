@@ -26,4 +26,4 @@
     - name: print my name
       debug:
         msg: print pradeep
-      when: NAME == pradeep
+      when: NAME == "pradeep"
