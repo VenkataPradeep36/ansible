@@ -14,7 +14,7 @@
     - name: Print if there is ubuntu os
       debug:
         msg: Hello ubuntu
-      when: ansible_distribution == ubuntu
+      when: ansible_distribution == "ubuntu"
 
     ## number condition
     - name: Print if count == 23
