@@ -1,0 +1,23 @@
+- name: Demo on conditions
+  hosts:
+  vars:
+    IS_RUN: false
+    COUNT: 23
+  tasks:
+     ## Boolean Conditions
+    - name: Run based on user input
+      debug:
+        msg: Hello World
+      when: IS_RUN
+
+    ## String condition
+    - name: Print if there is ubuntu os
+      debug:
+        msg: Hello ubuntu
+      when: ansible_distribution == ubuntu
+
+    ## number condition
+    - name: Print if count == 23
+      debug:
+        msg: Count == 23
+      when: COUNT == 23
