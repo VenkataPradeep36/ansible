@@ -1,5 +1,5 @@
 - name: Demo on conditions
-  hosts:
+  hosts: localhost
   vars:
     IS_RUN: false
     COUNT: 23
