@@ -3,6 +3,7 @@
   vars:
     IS_RUN: false
     COUNT: 23
+    NAME: pradeep
   tasks:
      ## Boolean Conditions
     - name: Run based on user input
@@ -21,3 +22,8 @@
       debug:
         msg: Count == 23
       when: COUNT == 23
+
+    - name: print my name
+      debug:
+        msg: print pradeep
+      when: NAME == pradeep
