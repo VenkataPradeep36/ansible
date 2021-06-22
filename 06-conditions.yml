@@ -20,7 +20,7 @@
     ## number condition
     - name: Print if count == 23
       debug:
-        msg: Count == 23
+        msg: COUNT == 23
       when: COUNT == 23
 
     - name: print my name
