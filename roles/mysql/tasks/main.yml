@@ -7,25 +7,23 @@
     gpgcheck: no
     file: mysql
 
-- name: Remove MariaDB Libraries
+- name: Remove MariaDB
   yum:
     name: mariadb-libs
     state: absent
 
-- name: Install MySQL Server
+- name: Insall MySQL Community
   yum:
-    name:
-      - mysql-community-server
-      - MySQL-python
+    name: mysql-community-server
     state: present
 
-- name: Start MySQL Service
+- name: Start MySQL
   systemd:
     name: mysqld
     state: started
     enabled: yes
 
-- name: Check the MySQL Login
+- name: Checking the MySQL login
   community.mysql.mysql_query:
     login_user: root
     login_password: RoboShop@1
@@ -35,7 +33,7 @@
 
 - name: Reset MySQL Password
   block:
-    - name: Grabbing Default Password
+    - name: Grabbing Default Password from Log File
       shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
       register: MYSQL_DEFAULT_PASSWORD
 
@@ -44,7 +42,7 @@
         src: mysql-pass-reset.sql
         dest: /tmp/mysql-pass-reset.sql
 
-    - name: Set MySQL root Password
+    - name: Set MySQL root Password by loading the file
       shell: mysql --connect-expired-password -u root -p"{{MYSQL_DEFAULT_PASSWORD.stdout}}" < /tmp/mysql-pass-reset.sql
   when: out.failed
 
@@ -63,3 +61,7 @@
     target: /tmp/mysql-main/shipping.sql
     login_user: root
     login_password: RoboShop@1
+
+
+
+
