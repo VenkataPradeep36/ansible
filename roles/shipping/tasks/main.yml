@@ -1,4 +1,4 @@
-- name: SetUp cart Component
+- name: SetUp shipping Component
   include_role:
     name: common
-    tasks_from: shipping
+    tasks_from: java
