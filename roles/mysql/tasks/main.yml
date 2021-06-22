@@ -23,16 +23,47 @@
     state: started
     enabled: yes
 
-- name: Grabbing a password in log file
-  shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
-  register: MYSQL_DEFAULT_PASSWORD
+- name: Check the MySQL Login for password is resetted or not
+  community.mysql.mysql_query:
+    login_user: root
+    login_password: RoboShop@1
+    query: show databases
+  register: out
+  ignore_errors: yes
+
+- name: Reset MySQL password
+  block:
+    - name: Grabbing a password in log file
+      shell: grep "A temporary password" /var/log/mysqld.log | awk '{print $NF}'
+      register: MYSQL_DEFAULT_PASSWORD
+
+    - name: copy password from reset MySQL script
+      copy:
+        src: mysql-pass-reset.sql
+        dest: /tmp/mysql-pass-reset.sql
+
+    - name: set MySQL root password
+      shell: mysql --connect-expired-password -u root -p{{MYSQL_DEFAULT_PASSWORD.stdout}} < /tmp/mysql-pass-reset.sql
+  when: out.failed
 
 
-- name: copy password from reset MySQL script
-  copy:
-    src: mysql-pass-reset.sql
-    dest: /tmp/mysql-pass-reset.sql
+- name: Download package
+  include_role:
+    name: common
+    tasks_from: download-from-github
+  vars:
+    APP_DIR: /tmp/mongodb-main
+    EXTRACT_DIR: /tmp
 
-- name: set MySQL root password
-  shell: mysql --connect-expired-password -u root -p{{MYSQL_DEFAULT_PASSWORD.stdout}} < /tmp/mysql-pass-reset.sql
+- name: Load schema of user and catalogue
+  community.mysql.mysql_shell:
+    state: import
+    name: all
+    target: /tmp/mysql-main/shipping.sql
+    login_user: root
+    login_password: RoboShop@1
+
+
+
+
 
