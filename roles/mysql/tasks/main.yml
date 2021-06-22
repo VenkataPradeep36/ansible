@@ -56,7 +56,7 @@
     EXTRACT_DIR: /tmp
 
 - name: Load schema of user and catalogue
-  community.mysql.mysql_shell:
+  community.mysql.mysql_db:
     state: import
     name: all
     target: /tmp/mysql-main/shipping.sql
