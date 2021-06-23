@@ -1,0 +1,4 @@
+Hello{{ansible_user_id}}
+  This is demo Template
+
+URL = {{ URL }}

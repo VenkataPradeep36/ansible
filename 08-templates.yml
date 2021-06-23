@@ -1,0 +1,4 @@
+- name: Demo on varibales
+  hosts: local host
+  roles:
+    - sample
