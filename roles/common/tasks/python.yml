@@ -28,8 +28,8 @@
 
 - name: Install pythom dependencies
    pip:
-      requirements: /home/roboshop/{{COMPONENT}}/
-      executable: pip3
+     requirements: /home/roboshop/{{COMPONENT}}/
+     executable: pip3
 
 - name: Copy SystemD file
   copy:
