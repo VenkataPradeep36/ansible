@@ -1,5 +1,5 @@
 - name: Clean known Hosts Entries
-  hosts: local host
+  hosts: localhost
   tasks:
     - name: Clean Known Hosts Files
       file:
