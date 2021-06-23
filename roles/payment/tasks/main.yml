@@ -1,3 +1,4 @@
-- name: print component name
-  debug:
-    msg: component=payment
+- name: SetUp payment Component
+  include_role:
+    name: common
+    tasks_from: python
