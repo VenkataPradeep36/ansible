@@ -26,9 +26,9 @@
     remote_src: yes
   become_user: roboshop
 
-- name: Install pythom dependencies
+- name: Install python dependencies
   pip:
-    requirements: /home/roboshop/{{COMPONENT}}/
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
     executable: pip3
 
 - name: Copy SystemD file
