@@ -1,7 +1,7 @@
-- name: Clean known Hosts Entries
+- name: Clean Known Hosts entries
   hosts: localhost
   tasks:
-    - name: Clean Known Hosts Files
+    - name: Clear Known Hosts file
       file:
         path: ~/.ssh/known_hosts
         state: absent
